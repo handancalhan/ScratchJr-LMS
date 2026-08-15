@@ -25,27 +25,21 @@
       overflow: hidden;
     }
 
-    #scratchjr-container {
-      width: 80%;
-      height: 100%;
-      position: relative;
-      overflow: hidden;
-      transform-origin: top left;
-    }
+    #scratchjr-scale {
+      position: absolute;
+      left: 0;
+      top: 0;
 
-    #frame,
-    #libframe,
-    #paintframe {
+      width: 125%;
+      height: 125%;
+
+      transform: scale(0.80);
       transform-origin: top left;
     }
   </style>
 
   <script>
     window.scratchJrPage = "editor";
-
-    // Read initial project data from URL hash or query param
-    // Hash: iframe.src = "index.html#" + encodeURIComponent(jsonString)
-    // Query: iframe.src = "index.html?data=" + jsonString (legacy)
 
     if (window.location.hash && window.location.hash.length > 1) {
       try {
@@ -64,7 +58,6 @@
       }
     }
 
-    // Support postMessage for loading data after init
     window.addEventListener("message", function (e) {
       if (e.data && e.data.type === "LOAD_DATA") {
         window.__scratchJrLoadData = e.data.data;
@@ -86,10 +79,12 @@
 </head>
 
 <body>
-  <div id="scratchjr-container">
+
+  <div id="scratchjr-scale">
     <div class="frame" id="frame"></div>
     <div class="libframe" id="libframe"></div>
     <div class="paintframe" id="paintframe"></div>
   </div>
+
 </body>
 </html>
