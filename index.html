@@ -3,7 +3,6 @@
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:xlink="http://www.w3.org/1999/xlink"
 >
-<head>
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
@@ -12,81 +11,50 @@
   <meta http-equiv="cache-control" content="no-cache" />
   <meta charset="utf-8" />
 
-  <title>ScratchJr</title>
+  <head>
+    <title>ScratchJr</title>
 
- <style>
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    width: 125%;
-    height: 125%;
-    background: white;
-    overflow: hidden;
-  }
+    <script>
+      window.scratchJrPage = "editor";
 
-  body {
-    transform: scale(0.80);
-    transform-origin: 0 0;
-  }
-</style>
-
-    body {
-      margin: 0;
-      padding: 0;
-      background: white;
-      overflow: hidden;
-
-      zoom: 0.80;
-
-      width: 125%;
-      height: 125%;
-    }
-  </style>
-
-  <script>
-    window.scratchJrPage = "editor";
-
-    if (window.location.hash && window.location.hash.length > 1) {
-      try {
-        window.savedContent = decodeURIComponent(
-          window.location.hash.substring(1)
-        );
-      } catch (e) {
-        window.savedContent = window.location.hash.substring(1);
-      }
-    } else {
-      var urlParams = new URLSearchParams(window.location.search);
-      var dataParam = urlParams.get("data");
-
-      if (dataParam) {
-        window.savedContent = dataParam;
-      }
-    }
-
-    window.addEventListener("message", function (e) {
-      if (e.data && e.data.type === "LOAD_DATA") {
-        window.__scratchJrLoadData = e.data.data;
-
-        if (window.__scratchJrReady && window.__loadExternalProject) {
-          window.__loadExternalProject(e.data.data);
+      if (window.location.hash && window.location.hash.length > 1) {
+        try {
+          window.savedContent = decodeURIComponent(
+            window.location.hash.substring(1)
+          );
+        } catch (e) {
+          window.savedContent = window.location.hash.substring(1);
+        }
+      } else {
+        var urlParams = new URLSearchParams(window.location.search);
+        var dataParam = urlParams.get("data");
+        if (dataParam) {
+          window.savedContent = dataParam;
         }
       }
 
-      if (e.data && e.data.type === "REQUEST_SAVE") {
-        if (window.__scratchJrReady && window.__requestSave) {
-          window.__requestSave();
+      window.addEventListener("message", function (e) {
+        if (e.data && e.data.type === "LOAD_DATA") {
+          window.__scratchJrLoadData = e.data.data;
+          if (window.__scratchJrReady && window.__loadExternalProject) {
+            window.__loadExternalProject(e.data.data);
+          }
         }
-      }
-    });
-  </script>
 
-  <script defer src="bundle.js"></script>
-</head>
+        if (e.data && e.data.type === "REQUEST_SAVE") {
+          if (window.__scratchJrReady && window.__requestSave) {
+            window.__requestSave();
+          }
+        }
+      });
+    </script>
 
-<body>
-  <div class="frame" id="frame"></div>
-  <div class="libframe" id="libframe"></div>
-  <div class="paintframe" id="paintframe"></div>
-</body>
+    <script defer src="bundle.js"></script>
+  </head>
+
+  <body style="background: white; overflow: auto">
+    <div class="frame" id="frame"></div>
+    <div class="libframe" id="libframe"></div>
+    <div class="paintframe" id="paintframe"></div>
+  </body>
 </html>
