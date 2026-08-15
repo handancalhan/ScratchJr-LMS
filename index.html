@@ -28,6 +28,7 @@
       } else {
         var urlParams = new URLSearchParams(window.location.search);
         var dataParam = urlParams.get("data");
+
         if (dataParam) {
           window.savedContent = dataParam;
         }
@@ -36,6 +37,7 @@
       window.addEventListener("message", function (e) {
         if (e.data && e.data.type === "LOAD_DATA") {
           window.__scratchJrLoadData = e.data.data;
+
           if (window.__scratchJrReady && window.__loadExternalProject) {
             window.__loadExternalProject(e.data.data);
           }
@@ -51,7 +53,8 @@
 
     <script defer src="bundle.js"></script>
   </head>
-  <body style="background:white; margin:0; min-width:1024px; min-height:768px; overflow:auto;">
+
+  <body style="background: white; overflow: auto">
     <div class="frame" id="frame"></div>
     <div class="libframe" id="libframe"></div>
     <div class="paintframe" id="paintframe"></div>
