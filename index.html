@@ -15,26 +15,25 @@
   <title>ScratchJr</title>
 
   <style>
-    html,
-    body {
+    html {
       margin: 0;
       padding: 0;
       width: 100%;
       height: 100%;
-      background: white;
       overflow: hidden;
+      background: white;
     }
 
-    #scratchjr-scale {
-      position: absolute;
-      left: 0;
-      top: 0;
+    body {
+      margin: 0;
+      padding: 0;
+      background: white;
+      overflow: hidden;
+
+      zoom: 0.80;
 
       width: 125%;
       height: 125%;
-
-      transform: scale(0.80);
-      transform-origin: top left;
     }
   </style>
 
@@ -79,12 +78,8 @@
 </head>
 
 <body>
-
-  <div id="scratchjr-scale">
-    <div class="frame" id="frame"></div>
-    <div class="libframe" id="libframe"></div>
-    <div class="paintframe" id="paintframe"></div>
-  </div>
-
+  <div class="frame" id="frame"></div>
+  <div class="libframe" id="libframe"></div>
+  <div class="paintframe" id="paintframe"></div>
 </body>
 </html>
