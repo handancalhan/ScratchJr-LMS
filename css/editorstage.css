@@ -432,27 +432,3 @@ p.stylelabel {
     margin-bottom: 0px;
     cursor: default;
 }
-/* LMS boyut düzeltmesi */
-@media screen and (max-width: 1400px) {
-
-    #stageframe {
-        width: 560px;
-        height: 420px;
-    }
-
-    #stageframe .stage,
-    *.stage.normal,
-    *.stage.fullscreen,
-    *.stagepage {
-        width: 384px;
-        height: 288px;
-    }
-
-    #stageframe .stage.editable {
-        left: 74px;
-    }
-
-    #stageframe .stage.noteditable {
-        left: 21px;
-    }
-}
